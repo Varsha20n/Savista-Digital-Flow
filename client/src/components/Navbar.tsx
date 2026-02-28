@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
+import { useTheme } from "./ThemeProvider";
+import { Sun, Moon } from "lucide-react";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,7 +28,7 @@ export function Navbar() {
       className={`
         fixed top-0 w-full z-50 transition-all duration-500
         ${scrolled 
-          ? "py-4 bg-background/70 backdrop-blur-xl border-b border-white/5" 
+          ? "py-4 bg-background/70 backdrop-blur-xl border-b border-border" 
           : "py-6 bg-transparent border-transparent"
         }
       `}
@@ -35,20 +38,28 @@ export function Navbar() {
           <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[hsl(var(--cobalt))] to-[hsl(var(--cyan))] flex items-center justify-center">
             <span className="text-white text-xs">S</span>
           </div>
-          Savista
+          <span className="text-foreground">Savista</span>
         </Link>
 
-        <nav className="hidden md:flex gap-8">
+        <nav className="hidden md:flex gap-8 items-center">
           {["Services", "Case Studies", "Stats", "Contact"].map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase().replace(' ', '-')}`}
               onClick={(e) => handleNavClick(e, item.toLowerCase().replace(' ', '-'))}
-              className="text-sm font-medium text-slate-300 hover:text-white transition-colors magnetic-interactive"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors magnetic-interactive"
             >
               {item}
             </a>
           ))}
+          
+          <button
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="p-2 rounded-full hover:bg-muted transition-colors magnetic-interactive text-foreground"
+            aria-label="Toggle theme"
+          >
+            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
         </nav>
 
         <button 
@@ -56,7 +67,7 @@ export function Navbar() {
             const btn = e.currentTarget as HTMLButtonElement;
             handleNavClick(btn as any, 'contact');
           }}
-          className="hidden md:block px-5 py-2 rounded-full text-sm font-semibold bg-white/10 hover:bg-white/20 text-white border border-white/10 transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,242,255,0.3)] magnetic-interactive"
+          className="hidden md:block px-5 py-2 rounded-full text-sm font-semibold bg-primary text-primary-foreground hover:opacity-90 transition-all duration-300 hover:shadow-[0_0_20px_rgba(46,91,255,0.3)] magnetic-interactive"
         >
           Let's Talk
         </button>

@@ -12,8 +12,8 @@
   --slate: 215 16% 65%; /* Slate Grey */
   --white: 0 0% 100%;
   
-  --background: var(--obsidian);
-  --foreground: var(--white);
+  --background: 0 0% 100%;
+  --foreground: var(--obsidian);
   
   --primary: var(--cobalt);
   --primary-foreground: var(--white);
@@ -21,13 +21,31 @@
   --accent: var(--cyan);
   --accent-foreground: var(--obsidian);
   
+  --muted: 215 20% 95%;
+  --muted-foreground: 215 16% 45%;
+
+  --border: 215 20% 90%;
+
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Syne', sans-serif;
+  
+  --card: 0 0% 98%;
+  --card-foreground: var(--obsidian);
+  --card-border: 215 20% 90%;
+}
+
+.dark {
+  --background: var(--obsidian);
+  --foreground: var(--white);
+  
   --muted: 215 20% 15%;
   --muted-foreground: var(--slate);
 
   --border: 215 20% 15%;
-
-  --font-sans: 'Inter', sans-serif;
-  --font-display: 'Syne', sans-serif;
+  
+  --card: 215 20% 10%;
+  --card-foreground: var(--white);
+  --card-border: 215 20% 15%;
 }
 
 @layer base {
@@ -43,7 +61,7 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    @apply font-bold tracking-tight text-white;
+    @apply font-bold tracking-tight text-foreground;
   }
   
   /* Fallback for elements that might force cursor */
@@ -54,7 +72,7 @@
 
 @layer utilities {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-white/60;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground to-foreground/60;
   }
   
   .text-gradient-brand {
@@ -62,7 +80,7 @@
   }
 
   .glass-card {
-    @apply bg-white/[0.02] backdrop-blur-xl border border-white/[0.05] shadow-2xl;
+    @apply bg-background/50 backdrop-blur-xl border border-border shadow-2xl dark:bg-white/[0.02] dark:border-white/[0.05];
   }
 }
 
@@ -101,7 +119,7 @@ html.lenis, html.lenis body {
   padding: 1px;
   background: radial-gradient(
     600px circle at var(--mouse-x, 0) var(--mouse-y, 0),
-    rgba(0, 242, 255, 0.4),
+    rgba(46, 91, 255, 0.4),
     transparent 40%
   );
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -110,6 +128,7 @@ html.lenis, html.lenis body {
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s ease;
+  z-index: 10;
 }
 
 .spotlight-wrapper:hover::before {
@@ -123,7 +142,7 @@ html.lenis, html.lenis body {
   left: 0;
   width: 12px;
   height: 12px;
-  background-color: hsl(var(--cyan));
+  background-color: hsl(var(--cobalt));
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
@@ -146,7 +165,7 @@ html.lenis, html.lenis body {
   inset: 0;
   z-index: -1;
   overflow: hidden;
-  opacity: 0.2;
+  opacity: 0.1;
 }
 
 .data-flow-line {
