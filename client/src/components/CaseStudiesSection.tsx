@@ -48,10 +48,10 @@ export function CaseStudiesSection() {
   }, [displayCases]);
 
   return (
-    <section id="case-studies" ref={sectionRef} className="py-24 md:h-screen flex flex-col justify-center bg-black overflow-hidden relative">
+    <section id="case-studies" ref={sectionRef} className="py-24 md:h-screen flex flex-col justify-center bg-background dark:bg-black overflow-hidden relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full mb-12 md:mb-20 shrink-0">
         <h2 className="text-sm font-medium tracking-widest text-[hsl(var(--cyan))] uppercase mb-4">Portfolio</h2>
-        <h3 className="text-4xl md:text-6xl font-bold text-white">Featured <span className="text-slate-500">Work</span></h3>
+        <h3 className="text-4xl md:text-6xl font-bold text-foreground">Featured <span className="text-slate-400 dark:text-slate-500">Work</span></h3>
       </div>
 
       <div className="w-full overflow-x-auto md:overflow-visible no-scrollbar pb-8 md:pb-0">
@@ -61,8 +61,8 @@ export function CaseStudiesSection() {
               key={study.id} 
               className="w-[85vw] md:w-[600px] lg:w-[800px] shrink-0 group cursor-pointer magnetic-interactive"
             >
-              <div className="relative overflow-hidden rounded-2xl aspect-[16/9] mb-6">
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
+              <div className="relative overflow-hidden rounded-2xl aspect-[16/9] mb-6 border border-border">
+                <div className="absolute inset-0 bg-black/10 dark:bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
                 {/* Unsplash image via API or fallback */}
                 <img 
                   src={study.imageUrl} 
@@ -70,18 +70,18 @@ export function CaseStudiesSection() {
                   className="w-full h-full object-cover transform scale-100 group-hover:scale-110 transition-transform duration-700 ease-out"
                 />
                 <div className="absolute bottom-6 left-6 z-20">
-                  <div className="inline-block px-4 py-2 bg-black/50 backdrop-blur-md rounded-full border border-white/10 text-sm font-semibold text-white">
+                  <div className="inline-block px-4 py-2 bg-white/80 dark:bg-black/50 backdrop-blur-md rounded-full border border-black/5 dark:border-white/10 text-sm font-semibold text-foreground dark:text-white">
                     {study.results}
                   </div>
                 </div>
               </div>
               <div className="flex justify-between items-start">
                 <div>
-                  <h4 className="text-3xl font-display font-bold text-white mb-2 group-hover:text-[hsl(var(--cyan))] transition-colors">{study.title}</h4>
-                  <p className="text-slate-400 text-lg max-w-lg">{study.description}</p>
+                  <h4 className="text-3xl font-display font-bold text-foreground mb-2 group-hover:text-[hsl(var(--cyan))] transition-colors">{study.title}</h4>
+                  <p className="text-slate-600 dark:text-slate-400 text-lg max-w-lg">{study.description}</p>
                 </div>
-                <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center transform -rotate-45 group-hover:rotate-0 transition-transform duration-500 bg-white/5">
-                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-12 h-12 rounded-full border border-black/10 dark:border-white/20 flex items-center justify-center transform -rotate-45 group-hover:rotate-0 transition-transform duration-500 bg-black/5 dark:bg-white/5">
+                  <svg className="w-5 h-5 text-foreground dark:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </div>
