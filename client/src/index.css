@@ -253,6 +253,65 @@ html.lenis, html.lenis body {
   100% { transform: translateY(100vh); opacity: 0; }
 }
 
+/* Floating gradient orbs animation */
+.hero-floating-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.floating-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.3;
+  animation: float 20s infinite ease-in-out;
+}
+
+.floating-orb:nth-child(1) {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(46, 91, 255, 0.4), transparent);
+  top: -250px;
+  left: -250px;
+  animation-delay: 0s;
+}
+
+.floating-orb:nth-child(2) {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(0, 242, 255, 0.3), transparent);
+  top: 50%;
+  right: -200px;
+  animation-delay: -7s;
+}
+
+.floating-orb:nth-child(3) {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(46, 91, 255, 0.3), transparent);
+  bottom: -175px;
+  left: 30%;
+  animation-delay: -14s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(50px, -50px) scale(1.1);
+  }
+  50% {
+    transform: translate(-30px, 30px) scale(0.9);
+  }
+  75% {
+    transform: translate(-50px, -30px) scale(1.05);
+  }
+}
+
 /* Stagger reveals */
 .split-word {
   display: inline-block;

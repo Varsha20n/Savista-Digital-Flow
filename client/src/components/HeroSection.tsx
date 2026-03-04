@@ -41,6 +41,18 @@ export function HeroSection() {
 
   return (
     <section ref={containerRef} className="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden">
+      {/* Video Background */}
+      <div className="absolute inset-0 z-[0]">
+        <video
+          src="/video.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover opacity-50"
+        />
+      </div>
+
       {/* Background Data Flow Effect */}
       <div className="data-flow-bg">
         {Array.from({ length: 20 }).map((_, i) => (
